@@ -1,0 +1,16 @@
+{
+  "routes": {
+    "root": {
+      "helmet": {
+        "TITLE": "INDEX",
+        "meta": {
+          "NAME": "index",
+          "CONTENT": "index"
+        }
+      }
+    }
+  },
+  "ui": {
+    "components": {}
+  }
+}
