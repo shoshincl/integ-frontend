@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { Outlet } from "react-router";
+import { FC } from 'react';
+import { Outlet } from 'react-router';
 
-import Navbar from "./navbar";
-import { Helmet as HelmetReact } from "../../../ui/components/utils";
+import Navbar from './Navbar';
+import { Helmet as HelmetReact } from '../../../ui/components/utils';
 
 interface Content {
   name: string;
@@ -22,7 +22,9 @@ const Public: FC<Props> = ({ helmet }) => (
   <>
     <HelmetReact {...helmet} />
     <Navbar />
-    <Outlet />
+    <div className="xs:px-14 sm:px-24 lg:px-36 pt-[80px]">
+      <Outlet />
+    </div>
   </>
 );
 

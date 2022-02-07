@@ -9,7 +9,11 @@ module.exports = {
       xs: { max: '639px' },
       ...defaultTheme.screens,
     },
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#0071dc',
+      },
+    },
   },
   variants: {
     extend: { opacity: ['disabled'] },
