@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
 
 import PublicLayout from '../../../routes/layouts/public';
@@ -13,11 +13,10 @@ describe('Should render public route layout', () => {
       <PublicLayout helmet={helmet} />
     </HelmetProvider>
   );
-  it('must display navbar with logo', () => {
+  it('must display navbar with search', () => {
     const nav = screen.getByRole('navigation');
-    const logo = screen.getByRole('img');
+    const search = screen.getByRole('search');
     expect(nav).toBeInTheDocument();
-    expect(logo).toBeInTheDocument();
-    expect(logo).toHaveAttribute('alt', 'logo');
+    expect(search).toBeInTheDocument();
   });
 });
