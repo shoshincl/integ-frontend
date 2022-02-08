@@ -11,6 +11,16 @@
     }
   },
   "ui": {
-    "components": {}
+    "components": {
+      "forms": {
+        "search": {
+          "fields": {
+            "input": {
+              "PH": "Qué estás buscando?"
+            }
+          }
+        }
+      }
+    }
   }
 }
