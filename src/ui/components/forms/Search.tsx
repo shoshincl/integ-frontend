@@ -21,8 +21,12 @@ const Search: FC = () => {
       {({ handleSubmit, handleChange, values }) => {
         const { search } = values;
         return (
-          <Form role="search" onSubmit={handleSubmit}>
-            <div className="relative text-gray-600 focus-within:text-gray-400">
+          <Form
+            role="search"
+            className="min-w-[33%] xl:min-w-[50%]"
+            onSubmit={handleSubmit}
+          >
+            <div className="relative w-full text-gray-600 focus-within:text-gray-400">
               <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                 <svg
                   fill="none"
@@ -41,7 +45,7 @@ const Search: FC = () => {
                 type="search"
                 value={search}
                 onChange={handleChange}
-                className="rounded-2xl py-1 pl-7 pr-2"
+                className="rounded-2xl py-1 pl-7 pr-2 w-full"
                 placeholder={t('ui.components.forms.search.fields.input.PH')}
               />
             </div>

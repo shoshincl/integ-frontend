@@ -1,5 +1,20 @@
 {
   "routes": {
+    "layouts": {
+      "public": {
+        "navbar": {
+          "customer_service": {
+            "LABEL": "Servicio al cliente Lider.cl: Whatpsapp ",
+            "PHONE": "+56957211492",
+            "SCHEDULE": " | Horario: de lunes a viernes de 8:00 a 22:00 y sábado, domingo y festivos de 9:00 a 22:00"
+          },
+          "actions": {
+            "GO_TO_CATEGORIES": "Categorías",
+            "GO_TO_STORE": "Supermercado"
+          }
+        }
+      }
+    },
     "root": {
       "helmet": {
         "TITLE": "INDEX",
@@ -16,7 +31,7 @@
         "search": {
           "fields": {
             "input": {
-              "PH": "Qué estás buscando?"
+              "PH": "¿Qué estás buscando?"
             }
           }
         }
