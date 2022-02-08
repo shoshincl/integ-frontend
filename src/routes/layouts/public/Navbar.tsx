@@ -44,13 +44,13 @@ function Navbar() {
           <Search />
           <div className="flex h-full gap-x-2">
             <button className="flex items-center text-black bg-accentDark p-2 rounded-md h-full">
-              <img src={cart} className="h-full ml-1 mr-2" />
+              <img alt="cart icon" src={cart} className="h-full ml-1 mr-2" />
               <div className="bg-secondary rounded-full mr-1">
                 <span className="m-2">0</span>
               </div>
             </button>
             <button className="items-center text-white bg-accent p-2 rounded-md h-full hidden md:flex">
-              <img src={shop} className="h-full ml-1 mr-2" />
+              <img alt="shop icon" src={shop} className="h-full ml-1 mr-2" />
               <p className="text-md mr-4">
                 {t('routes.layouts.public.navbar.actions.GO_TO_STORE')}
               </p>
