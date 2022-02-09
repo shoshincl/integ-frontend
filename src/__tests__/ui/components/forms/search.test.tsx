@@ -53,15 +53,13 @@ describe('Should render Search form', () => {
     });
   });
   describe('Form submission', () => {
-    it('must fetch results', () => {
+    it('must fetch results and update context', () => {
       waitFor(() => {
         fireEvent.change(input, { target: { value: 1 } });
         fireEvent.submit(input);
         expect(handleSearch).toHaveBeenCalledTimes(1);
+        expect(onHandleSearch).toHaveBeenCalled();
       });
-    });
-    it('must update search context', () => {
-      expect(onHandleSearch).toHaveBeenCalled();
     });
   });
 });
