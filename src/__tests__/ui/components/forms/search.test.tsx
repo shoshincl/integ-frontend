@@ -41,4 +41,11 @@ describe('Should render Search form', () => {
       expect(submitHandler).not.toHaveBeenCalled();
     });
   });
+  it('must fire submission if search is number', () => {
+    waitFor(() => {
+      fireEvent.change(input, { target: { value: 1 } });
+      fireEvent.submit(input);
+      expect(submitHandler).toHaveBeenCalled();
+    });
+  });
 });
