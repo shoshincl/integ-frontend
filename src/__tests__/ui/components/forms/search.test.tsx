@@ -3,6 +3,7 @@ import {
   render,
   fireEvent,
   RenderResult,
+  waitFor,
 } from '@testing-library/react';
 
 import { I18nextProvider } from 'react-i18next';
@@ -28,7 +29,9 @@ describe('Should render Search form', () => {
   });
   afterEach(cleanup);
   it('must prevent submission if empty search', () => {
-    fireEvent.submit(input);
-    expect(submitHandler).not.toHaveBeenCalled();
+    waitFor(() => {
+      fireEvent.submit(input);
+      expect(submitHandler).not.toHaveBeenCalled();
+    });
   });
 });

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 
 export const handleSearch = async (search: string) =>
   new Promise((resolve) => {
@@ -8,6 +9,10 @@ export const handleSearch = async (search: string) =>
       resolve(search);
     } catch (error) {}
   });
+
+const ValidationSchema = Yup.object().shape({
+  search: Yup.string().required(),
+});
 
 const Search: FC = () => {
   const { t } = useTranslation();
@@ -17,6 +22,7 @@ const Search: FC = () => {
         await handleSearch(search).then((res) => console.log(res))
       }
       initialValues={{ search: '' }}
+      validationSchema={ValidationSchema}
     >
       {({ handleSubmit, handleChange, values }) => {
         const { search } = values;
@@ -47,6 +53,7 @@ const Search: FC = () => {
                 onChange={handleChange}
                 className="rounded-2xl py-1 pl-7 pr-2 w-full"
                 placeholder={t('ui.components.forms.search.fields.input.PH')}
+                required
               />
             </div>
           </Form>
