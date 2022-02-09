@@ -9,17 +9,21 @@ import {
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../../../../i18n';
 
-import Search from '../../../../ui/components/forms/Search';
+import { SearchContext } from '../../../../contexts/search';
+import Search, { handleSearch } from '../../../../ui/components/forms/Search';
 
 describe('Should render Search form', () => {
   let submitHandler: jest.Mock;
   let screen: RenderResult;
   let form: HTMLElement;
   let input: HTMLElement;
+  const onHandleSearch = jest.fn();
   beforeEach(() => {
     screen = render(
       <I18nextProvider i18n={i18n}>
-        <Search />
+        <SearchContext.Provider value={{ onHandleSearch }}>
+          <Search />
+        </SearchContext.Provider>
       </I18nextProvider>
     );
     submitHandler = jest.fn();
@@ -46,6 +50,18 @@ describe('Should render Search form', () => {
       fireEvent.change(input, { target: { value: 1 } });
       fireEvent.submit(input);
       expect(submitHandler).toHaveBeenCalled();
+    });
+  });
+  describe('Form submission', () => {
+    it('must fetch results', () => {
+      waitFor(() => {
+        fireEvent.change(input, { target: { value: 1 } });
+        fireEvent.submit(input);
+        expect(handleSearch).toHaveBeenCalledTimes(1);
+      });
+    });
+    it('must update search context', () => {
+      expect(onHandleSearch).toHaveBeenCalled();
     });
   });
 });
