@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '../../../i18n';
 
 import PublicLayout from '../../../routes/layouts/public';
 
@@ -10,7 +12,9 @@ describe('Should render public route layout', () => {
   };
   render(
     <HelmetProvider context={{}}>
-      <PublicLayout helmet={helmet} />
+      <I18nextProvider i18n={i18n}>
+        <PublicLayout helmet={helmet} />
+      </I18nextProvider>
     </HelmetProvider>
   );
   it('must display navbar with search', () => {
