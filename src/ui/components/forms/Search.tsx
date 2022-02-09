@@ -11,7 +11,7 @@ export const handleSearch = async (search: string) =>
   });
 
 const ValidationSchema = Yup.object().shape({
-  search: Yup.string().required(),
+  search: Yup.string().required().min(3),
 });
 
 const Search: FC = () => {

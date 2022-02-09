@@ -34,4 +34,11 @@ describe('Should render Search form', () => {
       expect(submitHandler).not.toHaveBeenCalled();
     });
   });
+  it('must prevent submission if search is string of length < 3', () => {
+    waitFor(() => {
+      fireEvent.change(input, { target: { value: 'ab' } });
+      fireEvent.submit(input);
+      expect(submitHandler).not.toHaveBeenCalled();
+    });
+  });
 });
