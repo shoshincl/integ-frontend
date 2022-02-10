@@ -1,8 +1,9 @@
-import { FC } from "react";
-import { Outlet } from "react-router";
+import { FC } from 'react';
+import { Outlet } from 'react-router';
 
-import Navbar from "./navbar";
-import { Helmet as HelmetReact } from "../../../ui/components/utils";
+import Navbar from './Navbar';
+import { Helmet as HelmetReact } from '../../../ui/components/utils';
+import { SearchContextProvider } from '../../../contexts/search';
 
 interface Content {
   name: string;
@@ -19,11 +20,13 @@ interface Props {
 }
 
 const Public: FC<Props> = ({ helmet }) => (
-  <>
+  <SearchContextProvider>
     <HelmetReact {...helmet} />
     <Navbar />
-    <Outlet />
-  </>
+    <div className="h-full px-5 pt-[90px]">
+      <Outlet />
+    </div>
+  </SearchContextProvider>
 );
 
 export default Public;

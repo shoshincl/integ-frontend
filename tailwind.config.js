@@ -9,7 +9,15 @@ module.exports = {
       xs: { max: '639px' },
       ...defaultTheme.screens,
     },
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#0071dc',
+        primaryDark: '#0d346b',
+        secondary: '#ffc220',
+        accent: '#5fb446',
+        accentDark: '#06568f',
+      },
+    },
   },
   variants: {
     extend: { opacity: ['disabled'] },
