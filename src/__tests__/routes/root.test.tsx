@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { SearchContext } from '../../contexts/search';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '../../i18n';
 
 import Root from '../../routes/root';
 
@@ -18,18 +20,28 @@ describe('Should render root route', () => {
       const providerProps = {
         search: '',
       };
-      customRender(<Root />, { providerProps });
+      customRender(
+        <I18nextProvider i18n={i18n}>
+          <Root />
+        </I18nextProvider>,
+        { providerProps }
+      );
       expect(screen.getByTestId('empty-search')).toBeTruthy();
     });
     it('must display product without discount', () => {
       const providerProps = {
-        search: '',
+        search: 'asd',
         products: [
           { id: 1, brand: 'test', description: 'test description', price: 500 },
         ],
       };
-      customRender(<Root />, { providerProps });
-      expect(screen.getByTestId('discount-label')).toBeNull();
+      customRender(
+        <I18nextProvider i18n={i18n}>
+          <Root />
+        </I18nextProvider>,
+        { providerProps }
+      );
+      expect(screen.queryByTestId('discount-label')).toBeNull();
     });
     it('must display product with discount', () => {
       const providerProps = {
@@ -43,7 +55,12 @@ describe('Should render root route', () => {
           },
         ],
       };
-      customRender(<Root />, { providerProps });
+      customRender(
+        <I18nextProvider i18n={i18n}>
+          <Root />
+        </I18nextProvider>,
+        { providerProps }
+      );
       expect(screen.getByTestId('discount-label')).toBeInTheDocument();
     });
   });

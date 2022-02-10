@@ -23,7 +23,7 @@ const Public: FC<Props> = ({ helmet }) => (
   <SearchContextProvider>
     <HelmetReact {...helmet} />
     <Navbar />
-    <div className="xs:px-14 sm:px-24 lg:px-36 pt-[90px]">
+    <div className="h-full px-5 pt-[90px]">
       <Outlet />
     </div>
   </SearchContextProvider>

@@ -14,7 +14,7 @@ type Product = {
 
 interface ISearchContext {
   search?: string;
-  products?: [Product?];
+  products: [Product?];
   onHandleSearch(search: string, products: [Product?]): Promise<any>;
 }
 
@@ -32,6 +32,7 @@ const reducer = (state: any, action: any) => {
 };
 
 export const SearchContext = createContext<ISearchContext>({
+  products: [],
   onHandleSearch: () => Promise.resolve(),
 });
 
