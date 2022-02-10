@@ -13,30 +13,40 @@ type Product = {
 };
 
 interface ISearchContext {
-  products?: [Product?];
+  search?: string;
+  products: [Product?];
+  onHandleSearch(search: string, products: [Product?]): Promise<any>;
 }
 
 const reducer = (state: any, action: any) => {
   switch (action.type) {
     case Actions.UPDATE_PRODUCTS:
-      return { ...state, products: action.payload.products };
+      return {
+        ...state,
+        search: action.payload.search,
+        products: action.payload.products,
+      };
     default:
       return state;
   }
 };
 
-export const SearchContext = createContext<ISearchContext>({});
+export const SearchContext = createContext<ISearchContext>({
+  products: [],
+  onHandleSearch: () => Promise.resolve(),
+});
 
 export const SearchContextConsumer = SearchContext.Consumer;
 
 export const SearchContextProvider: FC = (props) => {
   const [state, dispatch] = useReducer(reducer, {});
-  const onHandleSearch = (products: [Product]) =>
+  const onHandleSearch = (search: string, products: [Product]) =>
     new Promise((resolve) =>
       resolve(
         dispatch({
           type: Actions.UPDATE_PRODUCTS,
           payload: {
+            search,
             products,
           },
         })

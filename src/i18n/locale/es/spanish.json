@@ -36,6 +36,14 @@
           }
         }
       }
+    },
+    "layouts": {
+      "results": {
+        "NOTHING_TO_SHOW": "Realiza una búsqueda para ver productos.",
+        "SEARCHED": "Resultados para ",
+        "SORT_BY": "Ordenar por: destacados",
+        "LEGAL": "Ver información legal"
+      }
     }
   }
 }
